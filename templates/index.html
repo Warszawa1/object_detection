@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Feed</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            margin: 0;
+            background-color: #000;
+            h2{color:whitesmoke;}
+            p {color: yellow;}
+        }
+        video, img {
+            width: 75%;
+            height: auto;
+            border: 5px solid #fff;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Object detection test</h2>
+    <p>this is my first attempt to use YOLO8 with Flask</p>
+    <div id="message"></div>
+    <video id="video" autoplay></video>
+    <img id="processed_image" alt="Processed Frame">
+    <script>
+        const video = document.getElementById('video');
+
+        // Request access to the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error("Error accessing the camera: " + err);
+                alert("Error accessing the camera. Please check your browser settings and allow camera access.");
+            });
+
+        // Capture frame and send to the server
+        function captureFrame() {
+            if (video.videoWidth === 0 || video.videoHeight === 0) {
+                console.error("Video not initialized yet.");
+                return;
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob(blob => {
+                if (blob) {
+                    const formData = new FormData();
+                    formData.append('file', blob, 'frame.jpg');
+
+                    fetch('/video_feed', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.blob())
+                    .then(imageBlob => {
+                        const imageUrl = URL.createObjectURL(imageBlob);
+                        document.getElementById('processed_image').src = imageUrl;
+                    })
+                    .catch(err => console.error("Error sending frame: " + err));
+                } else {
+                    console.error("Blob creation failed");
+                }
+            }, 'image/jpeg');
+        }
+
+        // Capture frame every second
+        setInterval(captureFrame, 1000);
+    </script>
+</body>
+</html>
+
