@@ -67,15 +67,16 @@ def upload_test():
             processed_frame = process_frame(frame)
             _, buffer = cv2.imencode('.jpg', processed_frame)
             return Response(buffer.tobytes(), mimetype='image/jpeg')
-    return '''
-    <!doctype html>
-    <title>Upload a test file</title>
-    <h1>Upload a test image</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template ("test_upload.html")
+# '''
+#     <!doctype html>
+#     <title>Upload a test file</title>
+#     <h1>Upload a test image</h1>
+#     <form method=post enctype=multipart/form-data>
+#       <input type=file name=file>
+#       <input type=submit value=Upload>
+#     </form>
+#     '''
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

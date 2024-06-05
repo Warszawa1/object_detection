@@ -4,26 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Feed</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 90vh;
-            margin: 0;
-            background-color: #000;
-            h2{color:whitesmoke;}
-            p {color: yellow;}
-        }
-        video, img {
-            width: 75%;
-            height: auto;
-            border: 5px solid #fff;
-            border-radius: 5px;
-            margin-bottom: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
     <h2>Object detection test</h2>
@@ -31,6 +13,13 @@
     <div id="message"></div>
     <video id="video" autoplay></video>
     <img id="processed_image" alt="Processed Frame">
+    <br>
+    <h3>In case you want to try the model with a picture</h3>
+    <form action="/video_feed" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
     <script>
         const video = document.getElementById('video');
 
