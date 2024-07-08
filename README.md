@@ -8,8 +8,5 @@ The option to use it uploading with images is the '/test_upload' route
 ![Screenshot 2024-06-03 at 12 46 20](https://github.com/Warszawa1/object_detection/assets/48474962/ebea5f03-e074-4b87-8172-7a467b971e6d)
 
 
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#000"/>
-  <rect x="10" y="20" width="80" height="60" fill="#FFF"/>
-  <path d="M20,30L30,40L30,50L40,50L40,40L50,30L50,50L60,50L60,40L70,30L70,60L60,70L60,60L50,70L50,80L40,70L40,60L30,70L30,60L20,60L20,30L10,60L0,60L0,30Z" fill="#000"/>
-</svg>
+data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz48cmVjdCB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgZmlsbD0iI0ZGZiIvPjxwYXRoIGQ9Ik0yMCwzMEwzMCw0MEwzMCw1MEw0MCw1MEw0MCw0MEw1MCwzMEw1MCw1MEw2MCw1MEw2MCw0MEw3MCwzMEw3MCw2MEw2MCw3MEw2MCw2MEw1MCw3MEw1MCw4MEw0MCw3MEw0MCw4MEwzMCw3MEwzMCw2MEwyMCw2MEwyMCw3MEwxMCw2MEwxMCw3MEwwLDYwTDAsMzAiIGZpbGw9IiMwMDAiLz48L3N2Zz4=
+
